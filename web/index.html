@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Twitter Bio Cloud</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+
+		<script src="scripts/wordcloud2.js"></script>
+		<script>
+			function getWords() {
+				
+				var xmlhttp,
+					response;
+
+				var username = document.getElementById('username').value;
+
+				var options = {
+
+					list: [],
+					minSize: 5,
+					clearCanvas: true
+				}
+				
+				document.getElementById('intro').style.display = 'block';
+				
+				document.getElementById('canvas').style.display = 'none';
+				
+				document.getElementById('intro').style.backgroundColor = 'white';
+
+				document.getElementById('intro').innerHTML = '<h3>Fetching bio cloud...<h3><br><img width="100px" src="/images/loading_spinner.gif">';
+
+				if (window.XMLHttpRequest) {
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+				}
+
+				xmlhttp.onreadystatechange = function () {
+
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+						document.getElementById('intro').style.display = "none";
+						
+						document.getElementById('canvas').style.display = "block";
+						
+						response = JSON.parse(xmlhttp.responseText)
+
+						options.list = response;
+
+						WordCloud(document.getElementById('canvas'), options);
+					}
+				}
+
+				xmlhttp.open("GET", "?user=" + username, true);
+
+				xmlhttp.send();
+			};
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="header">
+				<ul class="nav nav-pills pull-right">
+					<li class="active"><a href="/">Home</a></li>
+				</ul>
+				<h3 class="text-muted">Twitter Bio Cloud</h3>
+			</div>
+
+			<div id="userInput">
+				<form onsubmit="return false" class="navbar-form" role="form">
+					<div class="form-group">
+						@ <input id="username" type="text" placeholder="steveabb" class="form-control">
+					</div>
+					<button onclick="getWords()" type="submit" class="btn btn-success">Submit</button>
+				</form>
+			</div>
+
+			<canvas style="display: none;" height='400px' width="700" id="canvas" class="canvas"></canvas>
+
+			<div class="jumbotron" id="intro">
+				<h3>Please enter a twitter user above</h3>
+			</div>
+
+
+			<div class="footer">
+				<p>&copy; Steve 2014</p>
+			</div>
+
+		</div> <!-- /container -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/scripts/bootstrap.min.js"></script>
+
+	</body>
+</html>
