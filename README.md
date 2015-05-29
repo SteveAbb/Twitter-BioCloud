@@ -6,7 +6,9 @@ Twitter BioCloud is a small project that is aimed to paint a picture of a Twitte
 
 ## Installation
 
-Twitter BioCloud uses the node package twit for communicating with Twitter's API. Before running the server, install twit using ```npm install twit```
+Twitter BioCloud uses the node package twit for communicating with Twitter's API. Before running the server, install twit using ```npm install twit```.
+
+Sign up as [Twitter developer](https://dev.twitter.com/) and populate the API information located in [`/BioCloud.js`](https://github.com/SteveAbb/Twitter-BioCloud/blob/master/BioCloud.js)
 
 ## Usage
 
