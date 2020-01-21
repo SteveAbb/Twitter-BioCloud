@@ -7,13 +7,8 @@ var fs = require('fs'),
 	path = require('path'),
 	url = require('url'),
 	bioCloud = require('./BioCloud.js'),
-	sampleData = require('./sample.json');
-
-var settings = {
-	"port": 8000,
-	"directory": "web",
-	"debug": 1
-};
+	sampleData = require('./sample.json'),
+	settings = require('env-smart').load({ lowercase: true });
 
 var server = http.createServer(function (request, response) {
 
@@ -23,7 +18,7 @@ var server = http.createServer(function (request, response) {
 
 	if ('user' in getParams) {
 
-		if (settings.debug) {
+		if (settings.sample_data === true) {
 			
 			response.writeHead(200, {
 				"Content-Type": "application/json"
@@ -58,7 +53,7 @@ var server = http.createServer(function (request, response) {
 		});
 	} else {
 
-		var filename = path.join(process.cwd(), settings.directory, pathname);
+		var filename = path.join(process.cwd(), '/src/web/', pathname);
 
 		if (!path.extname(filename)) {
 			filename = filename + '/index.html';
@@ -80,7 +75,7 @@ var server = http.createServer(function (request, response) {
 			}
 
 			response.writeHead(200, {
-				'Content-Type': mime.lookup(filename)
+				'Content-Type': mime.getType(filename)
 			});
 
 			fs.createReadStream(filename, {

@@ -1,0 +1,24 @@
+{
+  "name": "twitter-biocloud",
+  "version": "1.1.0",
+  "description": "Twitter BioCloud is a small project that is aimed to paint a picture of a Twitter user by using the Twitter bios of all the accounts a user follows.",
+  "homepage": "https://github.com/SteveAbb/Twitter-BioCloud#readme",
+  "bugs": {
+    "url": "https://github.com/SteveAbb/Twitter-BioCloud/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteveAbb/Twitter-BioCloud.git"
+  },
+  "license": "MIT",
+  "author": "Steve Abbagnaro <steve@abbagnaro.com> (http://abbagnaro.com)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "env-smart": "^2.1.1",
+    "mime": "^2.4.4",
+    "twit": "^2.2.11"
+  }
+}

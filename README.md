@@ -2,17 +2,24 @@
 
 Twitter BioCloud is a small project that is aimed to paint a picture of a Twitter user by using the Twitter bios of all the accounts a user follows. A word cloud is created that highlights the most commonly used words in all the bios.
 
-![Alt text](/screenshot.png?raw=true "BioCloud Screenshot")
+![Alt text](/doc/screenshot.png?raw=true "BioCloud Screenshot")
 
 ## Installation
 
-Twitter BioCloud uses the node package twit for communicating with Twitter's API. Before running the server, install twit using ```npm install twit```.
+Sign up as [Twitter developer](https://dev.twitter.com/) and populate your API information in an `.env` file:
 
-Sign up as [Twitter developer](https://dev.twitter.com/) and populate the API information located in [`/BioCloud.js`](https://github.com/SteveAbb/Twitter-BioCloud/blob/master/BioCloud.js#L15). Also change the ```debug: 1``` to ```debug: 0``` in [run.js](https://github.com/SteveAbb/Twitter-BioCloud/blob/master/run.js#L15) to no longer use the local sample data.
+```ini
+CONSUMER_KEY=xyz
+CONSUMER_SECRET=xyz
+ACCESS_TOKEN=xyz
+ACCESS_TOKEN_SECRET=xyz
+```
+
+Then, run `npm install` to populate dependencies.
 
 ## Usage
 
-Execute run.js to start the node web server ```node run.js```. Then go to ```http://localhost:8000``` in your browser.
+Run `npm run start`, then go to ```http://localhost:8000``` in your browser.
 
 ## Contributing
 
@@ -41,7 +48,7 @@ I often find myself stumbling upon new Twitter accounts and wondering what that 
 
 The MIT License (MIT)
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2014 Steve Abbagnaro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
