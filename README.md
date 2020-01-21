@@ -1,12 +1,12 @@
 # Twitter BioCloud
 
-Twitter BioCloud is a small project that is aimed to paint a picture of a Twitter user by using the Twitter bios of all the accounts a user follows. A word cloud is created that highlights the most commonly used words in all the bios.
+Twitter BioCloud is a small project that aims to paint a picture of a Twitter user by using the Twitter bios of all the accounts a user follows. A word cloud is created that highlights the most commonly used words in all the bios.
 
-![Alt text](/doc/screenshot.png?raw=true "BioCloud Screenshot")
+![Screenshot](/doc/screenshot.png?raw=true "BioCloud Screenshot")
 
-## Installation
+## Setup
 
-Sign up as [Twitter developer](https://dev.twitter.com/) and populate your API information in an `.env` file:
+Sign up as a [Twitter developer](https://dev.twitter.com/) and add your API credentials to an `.env` file in the project directory:
 
 ```ini
 CONSUMER_KEY=xyz
@@ -31,7 +31,7 @@ Run `npm run start`, then go to ```http://localhost:8000``` in your browser.
 
 ## History
 
-I often find myself stumbling upon new Twitter accounts and wondering what that person's intersets are before I follow them. More often than not, Twitter bios alone don't do justice. One day I had the idea of using the bios of all the accounts a user follows to create a word cloud highlighting most commonly used words amongst them all. Based on my limited testing, this has proven to paint quite an accurate picture of a user's true interests.
+I often find myself stumbling upon new Twitter accounts and wondering what that person's interests are before I follow them. More often than not, Twitter bios alone don't do justice. One day I had the idea of using the bios of all the accounts a user follows to create a word cloud highlighting most commonly used words amongst them all. Based on my limited testing, this has proven to paint quite an accurate picture of a user's true interests.
 
 ## Future plans
 * Make it more fault tolerate
