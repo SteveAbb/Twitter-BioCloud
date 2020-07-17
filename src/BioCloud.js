@@ -3,19 +3,26 @@
 
 var Twit = require('twit');
 
+const settings = require('env-smart').load({ lowercase: true });
+
 var totalBios,
 	groupCount,
 	friends,
 	username,
 	wordCountMinimum,
-	wordsToIgnore=['','the','and', 'of','for','i','to','a','in','at', 'on','my','is','are','from','with','your','you','by','twitter','we','that','im','i\'m','not','us','all','me','that','or','have','as','an','be','our','this','tweet','tweets','no','yes','follow','am','like','new','now','if','its','it\'s','so','if','here','dont','can','it','out','up','do','what','get','just','one','if','so','too','can','more','who','cant','own','but','also','official','he','she','1','about','know'];
+	wordsToIgnore=require('./ignore_words.js');
 
+const { consumer_key, consumer_secret, access_token, access_token_secret } = settings;
+
+if (consumer_key === '' || consumer_secret === '' || access_token === '' || access_token_secret === '') {
+	throw new Error('Environment variables missing Twitter developer credentials. Please populate CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, and ACCESS_TOKEN_SECRET environment variables in an .env file.');
+}
 
 var T = new Twit ( {
-	consumer_key:         '[YOUR INFO HERE]', 
-	consumer_secret:      '[YOUR INFO HERE]',
-	access_token:         '[YOUR INFO HERE]',
-	access_token_secret:  '[YOUR INFO HERE]'
+	consumer_key, 
+	consumer_secret,
+	access_token,
+	access_token_secret
 });
 
 exports.getWordCount = function getWordCount(user, minimum, callback) {
@@ -126,7 +133,7 @@ function generateWordCloud (totalBios) {
 
 			var currentWord = words[wordIndex];
 
-			if (wordsToIgnore.indexOf(currentWord) > -1) {
+			if (currentWord === '' || wordsToIgnore.indexOf(currentWord) > -1) {
 				continue;
 			}
 
